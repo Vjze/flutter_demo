@@ -12,9 +12,9 @@ void main() async {
   runApp(MyApp());
   if (Platform.isAndroid) {
     // 设置状态栏背景及颜色
-    SystemUiOverlayStyle systemUiOverlayStyle =
-        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+    // SystemUiOverlayStyle systemUiOverlayStyle =
+    //     SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+    // SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: []); //隐藏状态栏
   }

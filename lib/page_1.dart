@@ -9,7 +9,7 @@ class FavoritesPage extends StatelessWidget {
     var len = appState.len;
     return Scaffold(
         appBar: AppBar(
-          title: Text("test"),
+          title: Text("查询集合"),
         ),
         body: Column(
           children: [
