@@ -135,7 +135,7 @@
     },
     {
       "name": "rinf",
-      "rootUri": "file:///Users/wjz/.pub-cache/hosted/pub.dev/rinf-4.13.1",
+      "rootUri": "file:///Users/wjz/.pub-cache/hosted/pub.dev/rinf-4.13.2",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -200,7 +200,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-10-24T09:38:35.847434Z",
+  "generated": "2023-10-24T10:00:06.748307Z",
   "generator": "pub",
   "generatorVersion": "3.1.4"
 }
