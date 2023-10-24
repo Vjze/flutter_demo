@@ -1,0 +1,19 @@
+syntax = "proto3";
+package query_resource;
+
+message ReadRequest {
+  string input_string = 1;
+}
+
+message ReadResponse {
+  repeated DataInfos output_Lists = 1;
+}
+
+message DataInfos {
+  string pno = 1;
+  string sn = 2;
+  string pn = 3;
+  string order = 4;
+  string workid = 5;
+  string datatime = 6;
+}
