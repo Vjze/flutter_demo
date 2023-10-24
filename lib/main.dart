@@ -1,4 +1,3 @@
-
 import 'package:demo/page_1.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +13,10 @@ void main() async {
   if (Platform.isAndroid) {
     // 设置状态栏背景及颜色
     SystemUiOverlayStyle systemUiOverlayStyle =
-    SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-    // SystemChrome.setEnabledSystemUIOverlays([]); //隐藏状态栏
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: []); //隐藏状态栏
   }
 }
 
@@ -81,8 +81,6 @@ class MyAppState extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-
 
 class MyHomePage extends StatefulWidget {
   @override
