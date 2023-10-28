@@ -1,9 +1,9 @@
-import 'package:demo/page_1.dart';
-import 'package:english_words/english_words.dart';
+import 'package:flutter_demo/pages/home_page.dart';
+import 'package:flutter_demo/pages/query_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rinf/rinf.dart';
-import 'package:demo/messages/query_resource.pb.dart' as queryResource;
+import 'package:flutter_demo/messages/query_resource.pb.dart' as queryResource;
 import 'dart:io';
 import 'package:flutter/services.dart';
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'damo',
+        title: 'Flutter_Damo',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
@@ -40,11 +40,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
   final input = TextEditingController();
   var result = [];
   var len = "";
-  List s = [];
   var title = <String>["盒号", "Sn", "料号", "工单", "操作员", "装盒时间"];
   void getresult() async {
     final requestMessage = queryResource.ReadRequest(
@@ -60,24 +58,7 @@ class MyAppState extends ChangeNotifier {
       rustResponse.message!,
     );
     result = responseMessage.outputLists;
-    // print(result);
     len = result.length.toString();
-    notifyListeners();
-  }
-
-  void getNext() {
-    current = WordPair.random();
-    notifyListeners();
-  }
-
-  var favorites = <WordPair>[];
-
-  void toggleFavorite() {
-    if (favorites.contains(current)) {
-      favorites.remove(current);
-    } else {
-      favorites.add(current);
-    }
     notifyListeners();
   }
 }
@@ -92,127 +73,88 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Widget page;
-    switch (selectedIndex) {
-      case 0:
-        page = GeneratorPage();
-        break;
-      case 1:
-        page = FavoritesPage();
-        break;
-      default:
-        throw UnimplementedError('no widget for $selectedIndex');
-    }
-
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
-        body: Row(
-          children: [
-            SafeArea(
-              child: NavigationRail(
-                extended: constraints.maxWidth >= 600,
-                destinations: [
-                  NavigationRailDestination(
-                    icon: Icon(Icons.home),
-                    label: Text('Home'),
-                  ),
-                  NavigationRailDestination(
-                    icon: Icon(Icons.favorite),
-                    label: Text('Favorites'),
-                  ),
-                ],
-                selectedIndex: selectedIndex,
-                onDestinationSelected: (value) {
-                  setState(() {
-                    selectedIndex = value;
-                  });
-                },
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Theme.of(context).colorScheme.primaryContainer,
-                child: page,
-              ),
-            ),
-          ],
+        body: SafeArea(
+          child: constraints.maxWidth < 450
+              ? Column(
+                  children: [
+                    Expanded(
+                        child: MainArea(
+                      selectedIndex: selectedIndex,
+                    )),
+                    BottomNavigationBar(
+                      items: const [
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.home_filled), label: 'Home'),
+                        BottomNavigationBarItem(
+                            icon: Icon(Icons.search), label: 'Query'),
+                      ],
+                      currentIndex: selectedIndex,
+                      onTap: (index) {
+                        setState(() {
+                          selectedIndex = index;
+                        });
+                      },
+                    ),
+                  ],
+                )
+              : Row(
+                  children: <Widget>[
+                    Column(
+                      children: [
+                        const SizedBox(height: 10),
+                        const CircleAvatar(
+                          radius: 100,
+                          backgroundImage: AssetImage("assets/images/logo.png"),
+                        ),
+                        Expanded(
+                          child: NavigationRail(
+                            groupAlignment: BorderSide.strokeAlignCenter,
+                            destinations: const [
+                              NavigationRailDestination(
+                                  icon: Icon(Icons.home_filled),
+                                  label: Text('Home')),
+                              NavigationRailDestination(
+                                  icon: Icon(Icons.search),
+                                  label: Text('Query')),
+                            ],
+                            selectedIndex: selectedIndex,
+                            onDestinationSelected: (int index) {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                            },
+                            extended: constraints.maxWidth > 1000,
+                            useIndicator: true,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: MainArea(selectedIndex: selectedIndex),
+                    ),
+                  ],
+                ),
         ),
       );
     });
   }
 }
 
-class GeneratorPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var pair = appState.current;
-
-    IconData icon;
-    if (appState.favorites.contains(pair)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
-    }
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          BigCard(pair: pair),
-          SizedBox(height: 10),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton.icon(
-                onPressed: () {
-                  appState.toggleFavorite();
-                },
-                icon: Icon(icon),
-                label: Text('Like'),
-              ),
-              SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () {
-                  // appState.getNext();
-                  appState.getNext();
-                  print("object");
-                },
-                child: Text('Next'),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class BigCard extends StatelessWidget {
-  const BigCard({
+class MainArea extends StatelessWidget {
+  const MainArea({
     super.key,
-    required this.pair,
+    required this.selectedIndex,
   });
 
-  final WordPair pair;
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final style = theme.textTheme.displayMedium!.copyWith(
-      color: theme.colorScheme.onPrimary,
-    );
-
-    return Card(
-      color: theme.colorScheme.primary,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Text(
-          pair.asLowerCase,
-          style: style,
-          // semanticsLabel: "${pair.first} ${pair.second}",
-        ),
-      ),
+    return Container(
+      color: Theme.of(context).colorScheme.primaryContainer,
+      child: selectedIndex == 0 ? HomePage() : QueryPage(),
     );
   }
 }
