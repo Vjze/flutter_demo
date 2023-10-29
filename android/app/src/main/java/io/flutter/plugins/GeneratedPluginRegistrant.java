@@ -15,5 +15,10 @@ import io.flutter.embedding.engine.FlutterEngine;
 public final class GeneratedPluginRegistrant {
   private static final String TAG = "GeneratedPluginRegistrant";
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
+    try {
+      flutterEngine.getPlugins().add(new com.bruno.system_theme.SystemThemePlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin system_theme, com.bruno.system_theme.SystemThemePlugin", e);
+    }
   }
 }

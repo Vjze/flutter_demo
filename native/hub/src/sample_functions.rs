@@ -6,10 +6,7 @@ use crate::bridge::send_rust_signal;
 use crate::util::sql::box_work_test;
 use prost::Message;
 
-#[cfg(debug_assertions)]
-static SHOULD_DEMONSTRATE: bool = false;
-#[cfg(not(debug_assertions))]
-static SHOULD_DEMONSTRATE: bool = false;
+const SHOULD_DEMONSTRATE: bool = false; // Disabled when applied as template
 
 pub async fn handle_query_resource(rust_request: RustRequest) -> RustResponse {
     use crate::messages::query_resource::{ReadRequest, ReadResponse};
@@ -26,6 +23,7 @@ pub async fn handle_query_resource(rust_request: RustRequest) -> RustResponse {
             let response_message = ReadResponse {
                 output_lists: result,
             };
+            print!("1");
             RustResponse {
                 successful: true,
                 message: Some(response_message.encode_to_vec()),
@@ -66,7 +64,8 @@ pub async fn handle_counter_number(rust_request: RustRequest) -> RustResponse {
             // Decode raw bytes into a Rust message object.
             let message_bytes = rust_request.message.unwrap();
             let request_message = ReadRequest::decode(message_bytes.as_slice()).unwrap();
-            crate::debug_print!("{}", request_message.letter);
+            let letter = request_message.letter;
+            crate::debug_print!("{letter}");
 
             // Perform a simple calculation.
             let after_value: i32 = sample_crate::add_seven(request_message.before_number);
@@ -156,7 +155,12 @@ pub async fn stream_mandelbrot() {
 }
 
 pub async fn run_debug_tests() {
-    if !SHOULD_DEMONSTRATE {
+    #[cfg(debug_assertions)]
+    const IS_DEBUG_MODE: bool = true;
+    #[cfg(not(debug_assertions))]
+    const IS_DEBUG_MODE: bool = false;
+
+    if !SHOULD_DEMONSTRATE || !IS_DEBUG_MODE {
         return;
     }
 
@@ -165,12 +169,17 @@ pub async fn run_debug_tests() {
 
     // Get the current time.
     let current_time = sample_crate::get_current_time();
-    crate::debug_print!("System time: {}", current_time);
+    crate::debug_print!("System time: {current_time}");
+
+    // Fetch data from a web API.
+    let url = "https://jsonplaceholder.typicode.com/todos/1";
+    let web_response = sample_crate::fetch_from_web_api(url).await;
+    crate::debug_print!("Response from a web API: {web_response}");
 
     // Use a crate that accesses operating system APIs.
     let option = sample_crate::get_hardward_id();
     if let Some(hwid) = option {
-        crate::debug_print!("Hardware ID: {}", hwid);
+        crate::debug_print!("Hardware ID: {hwid}");
     } else {
         crate::debug_print!("Hardware ID is not available on this platform.");
     }

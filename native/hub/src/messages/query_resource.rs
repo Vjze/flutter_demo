@@ -11,10 +11,6 @@ pub struct ReadResponse {
     #[prost(message, repeated, tag="1")]
     pub output_lists: ::prost::alloc::vec::Vec<DataInfos>,
 }
-// message List {
-//    repeated DataInfos listOfString=1;
-// }
-
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DataInfos {
