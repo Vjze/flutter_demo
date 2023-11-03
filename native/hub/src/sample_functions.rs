@@ -17,13 +17,11 @@ pub async fn handle_query_resource(rust_request: RustRequest) -> RustResponse {
             let message_bytes = rust_request.message.unwrap();
             let request_message = ReadRequest::decode(message_bytes.as_slice()).unwrap();
 
-            
             let new_string = request_message.input_string;
             let result = box_work_test(new_string).await;
             let response_message = ReadResponse {
                 output_lists: result,
             };
-            print!("1");
             RustResponse {
                 successful: true,
                 message: Some(response_message.encode_to_vec()),
