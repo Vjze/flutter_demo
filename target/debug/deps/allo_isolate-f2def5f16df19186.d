@@ -1,9 +1,0 @@
-C:\Users\Administrator\Documents\flutter_demo\target\debug\deps\allo_isolate-f2def5f16df19186.rmeta: C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\lib.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\dart_array.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\into_dart.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\into_dart_extra.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\ffi.rs
-
-C:\Users\Administrator\Documents\flutter_demo\target\debug\deps\allo_isolate-f2def5f16df19186.d: C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\lib.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\dart_array.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\into_dart.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\into_dart_extra.rs C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\ffi.rs
-
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\lib.rs:
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\dart_array.rs:
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\into_dart.rs:
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\into_dart_extra.rs:
-C:\Users\Administrator\.cargo\registry\src\index.crates.io-6f17d22bba15001f\allo-isolate-0.1.20\src\ffi.rs:

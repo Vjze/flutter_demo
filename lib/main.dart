@@ -43,13 +43,12 @@ void main() async {
         TitleBarStyle.hidden,
         windowButtonVisibility: false,
       );
-      await windowManager.setMinimumSize(const Size(600, 800));
+      await windowManager.setMinimumSize(const Size(720, 1280));
       await windowManager.show();
       await windowManager.setPreventClose(true);
       await windowManager.setSkipTaskbar(false);
     });
   }
-  await Rinf.ensureInitialized();
   runApp(const MyApp());
 }
 
