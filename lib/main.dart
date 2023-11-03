@@ -43,7 +43,7 @@ void main() async {
         TitleBarStyle.hidden,
         windowButtonVisibility: false,
       );
-      await windowManager.setMinimumSize(const Size(720, 1280));
+      await windowManager.setMinimumSize(const Size(600, 800));
       await windowManager.show();
       await windowManager.setPreventClose(true);
       await windowManager.setSkipTaskbar(false);
@@ -274,7 +274,7 @@ class _MyHomePageState extends State<MyHomePage> with WindowListener {
             : appTheme.mode == ThemeMode.dark
                 ? Image.asset("images/logo_dark.png")
                 : appTheme.mode == ThemeMode.system
-                    ? Image.asset("images/logo_dark.png")
+                    ? Image.asset("images/logo_light.png")
                     : const SizedBox(),
         items: originalItems,
         footerItems: footerItems,
