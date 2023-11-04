@@ -20,14 +20,7 @@ const ReadRequest$json = {
     {'1': 'letter', '3': 1, '4': 1, '5': 9, '10': 'letter'},
     {'1': 'before_number', '3': 2, '4': 1, '5': 5, '10': 'beforeNumber'},
     {'1': 'dummy_one', '3': 3, '4': 1, '5': 13, '10': 'dummyOne'},
-    {
-      '1': 'dummy_two',
-      '3': 4,
-      '4': 1,
-      '5': 11,
-      '6': '.counter_number.SampleSchema',
-      '10': 'dummyTwo'
-    },
+    {'1': 'dummy_two', '3': 4, '4': 1, '5': 11, '6': '.counter_number.SampleSchema', '10': 'dummyTwo'},
     {'1': 'dummy_three', '3': 5, '4': 3, '5': 5, '10': 'dummyThree'},
   ],
 };
@@ -45,14 +38,7 @@ const ReadResponse$json = {
   '2': [
     {'1': 'after_number', '3': 1, '4': 1, '5': 5, '10': 'afterNumber'},
     {'1': 'dummy_one', '3': 2, '4': 1, '5': 13, '10': 'dummyOne'},
-    {
-      '1': 'dummy_two',
-      '3': 3,
-      '4': 1,
-      '5': 11,
-      '6': '.counter_number.SampleSchema',
-      '10': 'dummyTwo'
-    },
+    {'1': 'dummy_two', '3': 3, '4': 1, '5': 11, '6': '.counter_number.SampleSchema', '10': 'dummyTwo'},
     {'1': 'dummy_three', '3': 4, '4': 3, '5': 5, '10': 'dummyThree'},
   ],
 };
@@ -77,3 +63,4 @@ const SampleSchema$json = {
 final $typed_data.Uint8List sampleSchemaDescriptor = $convert.base64Decode(
     'CgxTYW1wbGVTY2hlbWESKAoQc2FtcGxlX2ZpZWxkX29uZRgBIAEoCFIOc2FtcGxlRmllbGRPbm'
     'USKAoQc2FtcGxlX2ZpZWxkX3R3bxgCIAEoCFIOc2FtcGxlRmllbGRUd28=');
+

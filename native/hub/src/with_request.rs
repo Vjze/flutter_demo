@@ -4,7 +4,7 @@
 
 use crate::bridge::api::{RustRequestUnique, RustResponse, RustResponseUnique};
 use crate::messages;
-use crate::sample_functions;
+use crate::sample_functions::{self, handle_deeper_resource};
 
 pub async fn handle_request(request_unique: RustRequestUnique) -> RustResponseUnique {
     // Get the request data.
@@ -21,7 +21,7 @@ pub async fn handle_request(request_unique: RustRequestUnique) -> RustResponseUn
         messages::sample_folder::deeper_folder::deeper_resource::ID => {
             sample_functions::handle_deeper_resource(rust_request).await
         }
-        messages::query_resource::ID => sample_functions::handle_query_resource(rust_request).await,
+        messages::query_resource::ID => handle_deeper_resource(rust_request).await,
         _ => RustResponse::default(),
     };
 

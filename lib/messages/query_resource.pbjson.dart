@@ -29,14 +29,7 @@ final $typed_data.Uint8List readRequestDescriptor = $convert.base64Decode(
 const ReadResponse$json = {
   '1': 'ReadResponse',
   '2': [
-    {
-      '1': 'output_Lists',
-      '3': 1,
-      '4': 3,
-      '5': 11,
-      '6': '.query_resource.DataInfos',
-      '10': 'outputLists'
-    },
+    {'1': 'output_Lists', '3': 1, '4': 3, '5': 11, '6': '.query_resource.DataInfos', '10': 'outputLists'},
   ],
 };
 
@@ -63,3 +56,4 @@ final $typed_data.Uint8List dataInfosDescriptor = $convert.base64Decode(
     'CglEYXRhSW5mb3MSEAoDcG5vGAEgASgJUgNwbm8SDgoCc24YAiABKAlSAnNuEg4KAnBuGAMgAS'
     'gJUgJwbhIUCgVvcmRlchgEIAEoCVIFb3JkZXISFgoGd29ya2lkGAUgASgJUgZ3b3JraWQSGgoI'
     'ZGF0YXRpbWUYBiABKAlSCGRhdGF0aW1l');
+

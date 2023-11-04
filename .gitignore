@@ -1,1 +1,8 @@
 /build
+
+# Rust related
+.cargo/
+target/
+
+# Generated messages
+*/**/messages/
