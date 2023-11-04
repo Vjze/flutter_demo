@@ -11,5 +11,4 @@
 
 import 'dart:core' as $core;
 
-
 const ID = 1;

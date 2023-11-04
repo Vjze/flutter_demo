@@ -2,10 +2,9 @@ use tiberius::time::chrono;
 
 // use crate::gui::views::{BoxDataInfo, SnDataInfo};
 
-
 use crate::messages::query_resource::DataInfos;
 
-use super::util::{client, login_check, sn_client};
+use super::util::{client};
 // pub async fn sn_work(s: String) -> String {
 //     // let mut row_data = Vec::new();
 //     let mut str = "".to_string();
@@ -97,7 +96,7 @@ pub async fn box_work_test(s: String) -> Vec<DataInfos> {
     let rowsets = stream.into_results().await.unwrap();
     for i in 0..rowsets.len() {
         let rows = rowsets.get(i).unwrap();
-        
+
         for row in rows {
             let pno = row.get::<&str, _>(0).unwrap().to_string();
             let sn = row.get::<&str, _>(1).unwrap().to_string();
@@ -109,19 +108,26 @@ pub async fn box_work_test(s: String) -> Vec<DataInfos> {
                 .unwrap()
                 .format("%Y/%m/%d %H:%M:%S")
                 .to_string();
-            datas.push(DataInfos { pno, sn, pn, order, workid, datatime })
+            datas.push(DataInfos {
+                pno,
+                sn,
+                pn,
+                order,
+                workid,
+                datatime,
+            })
             // datas.push(pno);
             // datas.push(sn);
             // datas.push(pn);
             // datas.push(workorder);
             // datas.push(creator);
             // datas.push(createtime);
+        }
     }
-}
     // let mut rv: Vec<Vec<String>> = vec![];
     // for i in 0..rowsets.len() {
     //     let rows = rowsets.get(i).unwrap();
-        
+
     //     for row in rows {
     //         // let mut data = vec![];
     //         let pno = row.get::<&str, _>(0).unwrap().to_string();
@@ -134,7 +140,7 @@ pub async fn box_work_test(s: String) -> Vec<DataInfos> {
     //             .unwrap()
     //             .format("%Y/%m/%d %H:%M:%S")
     //             .to_string();
-            
+
     //         datas.push(pno);
     //         datas.push(sn);
     //         datas.push(pn);
@@ -163,7 +169,7 @@ pub async fn box_work_test(s: String) -> Vec<DataInfos> {
 //     if r.is_empty() {
 //         false
 //     } else {
-        
+
 //         login_pass(id, pa).await
 //     }
 // }

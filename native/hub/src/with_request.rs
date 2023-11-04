@@ -21,9 +21,7 @@ pub async fn handle_request(request_unique: RustRequestUnique) -> RustResponseUn
         messages::sample_folder::deeper_folder::deeper_resource::ID => {
             sample_functions::handle_deeper_resource(rust_request).await
         }
-        messages::query_resource::ID => {
-            sample_functions::handle_query_resource(rust_request).await
-        }
+        messages::query_resource::ID => sample_functions::handle_query_resource(rust_request).await,
         _ => RustResponse::default(),
     };
 

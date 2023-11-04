@@ -11,7 +11,7 @@ pub async fn client() -> Client<Compat<TcpStream>> {
     config.trust_cert();
     let tcp = TcpStream::connect(config.get_addr()).await.unwrap();
     tcp.set_nodelay(true).unwrap();
-    
+
     tiberius::Client::connect(config, tcp.compat_write())
         .await
         .unwrap()
@@ -56,7 +56,7 @@ pub async fn sn_client() -> Client<Compat<TcpStream>> {
     config.trust_cert();
     let tcp = TcpStream::connect(config.get_addr()).await.unwrap();
     tcp.set_nodelay(true).unwrap();
-    
+
     tiberius::Client::connect(config, tcp.compat_write())
         .await
         .unwrap()
@@ -71,7 +71,7 @@ pub async fn login_check() -> Client<Compat<TcpStream>> {
     config.trust_cert();
     let tcp = TcpStream::connect(config.get_addr()).await.unwrap();
     tcp.set_nodelay(true).unwrap();
-    
+
     tiberius::Client::connect(config, tcp.compat_write())
         .await
         .unwrap()

@@ -26,4 +26,3 @@ const StateSignal$json = {
 final $typed_data.Uint8List stateSignalDescriptor = $convert.base64Decode(
     'CgtTdGF0ZVNpZ25hbBIOCgJpZBgBIAEoBVICaWQSIwoNY3VycmVudF9zY2FsZRgCIAEoAVIMY3'
     'VycmVudFNjYWxl');
-
